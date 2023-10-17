@@ -1,39 +1,40 @@
-const getComputerChoice = () => {
-  let random = Math.floor(Math.random() * 3);
+randomNumber = () => {
+  return Math.floor(Math.random() * 3);
+};
 
-  if (random === 0) {
+getComputerChoice = () => {
+  const choice = randomNumber();
+  if (choice === 0) {
     return "rock";
-  } else if (random === 1) {
+  } else if (choice === 1) {
     return "paper";
   } else {
     return "scissors";
   }
 };
 
-let game = (playerSelection, computerSelection = getComputerChoice()) => {
-  let newPS = playerSelection.toLowerCase();
-  let newCS = getComputerChoice();
+playRound = (playerSelection, computerSelection = getComputerChoice()) => {
+  const newPs = playerSelection.toLowerCase();
+  console.log(playerSelection);
+  console.log(computerSelection);
 
-  console.log(newPS);
-  console.log(newCS);
-
-  if (newPS === "rock" && newCS === "scissors") {
-    console.log("You Win! Rock beats Scissors");
-  } else if (newPS === "rock" && newCS === "paper") {
-    console.log("You Lose! Paper beats Rock");
-  } else if (newPS === "paper" && newCS === "rock") {
-    console.log("You Win!");
-  } else if (newPS === "paper" && newCS === "scissors") {
-    console.log("You lose");
-  } else if (newPS === "scissors" && newCS === "rock") {
-    console.log("You lose");
-  } else if (newPS === "scissors" && newCS === "rock") {
-    console.log("You lose");
-  } else if (newPS === "scissors" && newCS === "paper") {
-    console.log("You Win!");
-  } else {
-    console.log("Its a tie");
+  if (newPs === computerSelection) {
+    return "It's a tie";
+  } else if (newPs === "rock" && computerSelection === "paper") {
+    return "You Lose! Paper beats Rock";
+  } else if (newPs === "rock" && computerSelection === "scissors") {
+    return "You Win! Rock beats Scissors";
+  } else if (newPs === "paper" && computerSelection === "scissors") {
+    return "You Lose! Scissors beat Paper";
+  } else if (newPs === "paper" && computerSelection === "rock") {
+    return "You Win! Paper beats Rock";
+  } else if (newPs === "scissors" && computerSelection === "rock") {
+    return "You Lose! Rock beats Scissors";
+  } else if (newPs === "scissors" && computerSelection === "paper") {
+    return "You Win! Scissors beat Paper";
   }
 };
 
-game("Scissors");
+const playerSelection = "rock";
+const computerSelection = getComputerChoice();
+console.log(playRound(playerSelection, computerSelection));
