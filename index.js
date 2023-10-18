@@ -1,7 +1,14 @@
 const score = document.querySelector(".score");
+const pScore = document.createElement("h1");
+const cScore = document.createElement("h1");
 
 let playScore = 0;
 let compS = 0;
+
+score.append(pScore);
+pScore.textContent = "Player Score: " + playScore;
+score.append(cScore);
+cScore.textContent = "Computer Score: " + compS;
 
 const btns = document.querySelector(".btns");
 
@@ -35,25 +42,27 @@ playRound = (playerSelection, computerSelection = getComputerChoice()) => {
   if (playerSelection === computerSelection) {
     return "It's a tie";
   } else if (playerSelection === "rock" && computerSelection === "paper") {
-    console.log("Computer Score: " + (compS += 1));
+    compS += 1;
     return "You Lose! Paper beats Rock";
   } else if (playerSelection === "rock" && computerSelection === "scissors") {
-    console.log("Player Score: " + (playScore += 1));
+    playScore += 1;
     return "You Win! Rock beats Scissors";
   } else if (playerSelection === "paper" && computerSelection === "scissors") {
-    console.log("Computer Score: " + (compS += 1));
+    compS += 1;
     return "You Lose! Scissors beat Paper";
   } else if (playerSelection === "paper" && computerSelection === "rock") {
-    console.log("Player Score: " + (playScore += 1));
+    playScore += 1;
     return "You Win! Paper beats Rock";
   } else if (playerSelection === "scissors" && computerSelection === "rock") {
-    console.log("Computer Score: " + (compS += 1));
+    compS += 1;
     return "You Lose! Rock beats Scissors";
   } else if (playerSelection === "scissors" && computerSelection === "paper") {
-    console.log("Player Score: " + (playScore += 1));
+    playScore += 1;
     return "You Win! Scissors beat Paper";
   }
 };
+
+scoreBoard = () => {};
 
 rock.addEventListener("click", () => {
   console.log(playRound("rock"));
@@ -62,6 +71,8 @@ rock.addEventListener("click", () => {
   } else if (compS === 5) {
     console.log("Computer Wins the Match!");
   }
+  pScore.textContent = "Player Score: " + playScore;
+  cScore.textContent = "Computer Score: " + compS;
 });
 
 paper.addEventListener("click", () => {
@@ -71,6 +82,8 @@ paper.addEventListener("click", () => {
   } else if (compS === 5) {
     console.log("Computer Wins the Match!");
   }
+  pScore.textContent = "Player Score: " + playScore;
+  cScore.textContent = "Computer Score: " + compS;
 });
 
 scissors.addEventListener("click", () => {
@@ -80,4 +93,6 @@ scissors.addEventListener("click", () => {
   } else if (compS === 5) {
     console.log("Computer Wins the Match!");
   }
+  pScore.textContent = "Player Score: " + playScore;
+  cScore.textContent = "Computer Score: " + compS;
 });
