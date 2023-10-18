@@ -1,3 +1,38 @@
+/* 
+
+  Goal: connect btns to playerSelection
+
+  - click btn
+  - playerSelection takes btn that was clicked
+  - playerSelection returns '(whatever btn) was clicked'
+
+*/
+
+const btns = document.querySelector(".btns");
+
+const rock = document.createElement("button");
+
+const paper = document.createElement("button");
+
+const scissors = document.createElement("button");
+
+btns.append(rock);
+rock.textContent = "rock";
+btns.append(paper);
+paper.textContent = "paper";
+btns.append(scissors);
+scissors.textContent = "scissors";
+
+rock.addEventListener("click", () => {
+  console.log("rock");
+});
+paper.addEventListener("click", () => {
+  console.log("paper");
+});
+
+scissors.addEventListener("click", () => {
+  console.log("scissors");
+});
 randomNumber = () => {
   return Math.floor(Math.random() * 3);
 };
@@ -35,10 +70,4 @@ playRound = (playerSelection, computerSelection = getComputerChoice()) => {
   }
 };
 
-game = () => {
-  for (let i = 0; i < 5; i++) {
-    console.log(playRound("rock"));
-  }
-};
-
-game();
+game = () => {};
